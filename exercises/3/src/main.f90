@@ -1,4 +1,4 @@
-program exercise_3
+program exercise_3_1b
    use Environment
 
    implicit none
@@ -20,11 +20,11 @@ program exercise_3
 
    open (file=output_file, encoding=E_, newunit=Out)
       write (Out, '("Array:")')
+      
       fmt ="("//size//"f6.2)"
       write (Out, fmt) array
 
       fmt = "(4(a, f0.2/))"
       write (Out, fmt) "result = ", sum
-      
    close (Out)
-end program exercise_3
+end program exercise_3_1b

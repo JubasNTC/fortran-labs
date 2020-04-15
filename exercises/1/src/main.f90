@@ -1,4 +1,4 @@
-program exercise_1 
+program exercise_1
    use Environment
    
    implicit none
