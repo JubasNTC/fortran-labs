@@ -10,7 +10,6 @@ program exercise_6
       read (In, *) x
    close (In)
    
-   !sin_x = SinXImp(x)
    sh_x = shX(x)
 
    open (file=output_file, encoding=E_, newunit=Out)
