@@ -17,7 +17,7 @@ program exercise_32_b
    do i = 1, N, 1
       do j = 1, M - 1, 1
          do k = 1, M - j - 1, 1
-            if (result(i, k + 1) > result(i, k)) then
+            if (result(i, k + 1) <= result(i, k)) then
                temp = result(i, k)
                result(i, k) = result(i, k + 1)
                result(i, k + 1) = temp
