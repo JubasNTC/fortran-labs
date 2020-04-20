@@ -15,9 +15,9 @@ program exercise_8_1
       read (In, *) vector
    close (In)
    
-   tmatrix = transposeMatrix(matrix, N, M)
+   tmatrix = transposeMatrix(matrix)
 
-   result = matmul(matrix, vector)
+   result = matmul(tmatrix, vector)
 
    open (file=output_file, encoding=E_, newunit=Out)
       write(Out, *) "Matrix:"
@@ -31,9 +31,9 @@ program exercise_8_1
    close (Out)
 
 contains
-   pure function transposeMatrix(matrix, n, m) result(result)
+   pure function transposeMatrix(matrix) result(result)
       integer             :: result(n, m)
-      integer, intent(in) :: matrix(:, :), n, m
+      integer, intent(in) :: matrix(:, :)
       
       result = transpose(matrix)
    end function transposeMatrix
