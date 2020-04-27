@@ -14,7 +14,7 @@ program exercise_7_12_
    close (In)
    
    open (file=output_file, encoding=E_, newunit=Out)
-      write (Out, '('//N//'i0)') (Z(i, :), i = 1, N)
+      write (Out, '('//N//'(i1,1x))') (Z(i, :), i = 1, N)
    close (Out)
 
    s = getMinSumColumn(Z, N, M)

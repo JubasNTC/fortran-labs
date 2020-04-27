@@ -36,15 +36,7 @@ contains
       integer, intent(in) ::  Z(:, :), N, M
       integer             :: i, j
       
-      maxElement = -2147483646;
-
-      do i = 1, N, 1
-         do j = 1, M, 1
-            if (Z(i, j) > maxElement) then
-               maxElement = Z(i, j)
-            end if
-         end do
-      end do
+      maxElement = maxval(Z)
    end function getMaxElement
 
 end program exercise_7_17_a
