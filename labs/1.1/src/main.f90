@@ -23,6 +23,10 @@ program reference_lab_1_1
       read (In, format, iostat=IO) (Surnames(i), Positions(i), i = 1, EMPLOYEES_AMOUNT)
    close (In)
 
+   do i = 1, EMPLOYEES_AMOUNT, 1
+      Positions(i) = trim(Positions(i))
+   end do
+
    Out = OUTPUT_UNIT
    open (Out, encoding=E_)
    select case(io)
@@ -52,10 +56,10 @@ program reference_lab_1_1
          write (Out, '(a)') "Undetermined error has been reached while writing class list: ", io
    end select
 
-   Is_A_Technician = Positions == CH__"техник"
-   Is_A_Engineer = Positions == CH__"инженер"
-   Is_A_Senior_Engineer = Positions == CH__"старший инженер"
-   Is_A_Lead_Engineer = Positions == CH__"ведущий инженер"
+   Is_A_Technician = Positions == CH__"technician"
+   Is_A_Engineer = Positions == CH__"engineer"
+   Is_A_Senior_Engineer = Positions == CH__"senior engineer"
+   Is_A_Lead_Engineer = Positions == CH__"lead engineer"
 
    Technician_Amount = Count(Is_A_Technician)
    Engineer_Amount = Count(Is_A_Engineer)
@@ -65,10 +69,10 @@ program reference_lab_1_1
    open (file=output_file, encoding=E_, position='append', newunit=Out)
       write (out, '(/a)') "Результат:"
       format = "(4(a, i0))"
-      write (Out, format, iostat=IO) "техник - ", Technician_Amount
-      write (Out, format, iostat=IO) "инженер - ", Engineer_Amount
-      write (Out, format, iostat=IO) "старший инженер - ", Senior_Engineer_Amount
-      write (Out, format, iostat=IO) "ведущий инженер - ", Lead_Engineer_Amount
+      write (Out, format, iostat=IO) "technician - ", Technician_Amount
+      write (Out, format, iostat=IO) "engineer - ", Engineer_Amount
+      write (Out, format, iostat=IO) "senior engineer - ", Senior_Engineer_Amount
+      write (Out, format, iostat=IO) "lead engineer - ", Lead_Engineer_Amount
    close (Out)
 
 end program reference_lab_1_1
