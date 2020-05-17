@@ -4,7 +4,6 @@ program lab_1_3
 
    implicit none
    character(:), allocatable        :: input_file, output_file, data_file
-   character(kind=CH_), parameter   :: MALE = Char(1052, CH_), FEMALE = Char(1046, CH_)
    
    integer                          :: IO, Out
    character(:), allocatable        :: format
