@@ -1,5 +1,5 @@
 Дудиков         technician
 Тихонов         lead engineer
-Степин          engineer
+Степин          senior engineer
 Садовникова     senior engineer
 Воробъёва       engineer
