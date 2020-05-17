@@ -6,16 +6,16 @@ program lab_1_2
    character(kind=CH_), parameter   :: MALE = Char(1052, CH_), FEMALE = Char(1046, CH_)
    character(:), allocatable        :: input_file, output_file
 
-   character(POSITIONS_LEN, kind=CH_) :: TECHNICIAN = "technician"
-   character(POSITIONS_LEN, kind=CH_) :: LEAD_ENGINEER = "lead engineer"
-   character(POSITIONS_LEN, kind=CH_) :: ENGINEER = "engineer"
-   character(POSITIONS_LEN, kind=CH_) :: SENIOR_ENGINEER = "senior engineer"
-   character(kind=CH_)                :: Surnames(EMPLOYEES_AMOUNT, SURNAME_LEN)  = "", &
-                                         Positions(EMPLOYEES_AMOUNT, POSITIONS_LEN) = ""
-   integer                            :: Technician_Amount = 0, Engineer_Amount = 0
-   integer                            :: Senior_Engineer_Amount = 0, Lead_Engineer_Amount = 0
-   integer                            :: Out, IO
-   character(:), allocatable          :: fmt
+   character(kind=CH_), dimension(POSITIONS_LEN) :: TECHNICIAN = "technician"
+   character(kind=CH_), dimension(POSITIONS_LEN) :: LEAD_ENGINEER = "lead engineer"
+   character(kind=CH_), dimension(POSITIONS_LEN) :: ENGINEER = "engineer"
+   character(kind=CH_), dimension(POSITIONS_LEN) :: SENIOR_ENGINEER = "senior engineer"
+   character(kind=CH_)                           :: Surnames(EMPLOYEES_AMOUNT, SURNAME_LEN)  = "", &
+                                                    Positions(EMPLOYEES_AMOUNT, POSITIONS_LEN) = ""
+   integer                                       :: Technician_Amount = 0, Engineer_Amount = 0
+   integer                                       :: Senior_Engineer_Amount = 0, Lead_Engineer_Amount = 0
+   integer                                       :: Out, IO
+   character(:), allocatable                     :: fmt
    
 
    input_file  = "../data/class.txt"
@@ -73,23 +73,16 @@ contains
    end subroutine Output_class_list
 
    function Get_amount_by_position(Positions, Position) result(Position_Amount)
-      integer                                        :: Position_Amount, i
-      character(kind=CH_), intent(in)                :: Positions(EMPLOYEES_AMOUNT, POSITIONS_LEN)
-      character(kind=CH_)                            :: Tmp(1, POSITIONS_LEN)
-      character(POSITIONS_LEN, kind=CH_), intent(in) :: Position
+      integer                                                   :: Position_Amount, i
+      character(kind=CH_), intent(in)                           :: Positions(EMPLOYEES_AMOUNT, POSITIONS_LEN)
+      character(kind=CH_), dimension(POSITIONS_LEN), intent(in) :: Position
 
       Position_Amount  = 0
-      Tmp = Position
 
       do i = 1, EMPLOYEES_AMOUNT, 1
-         if (count(Positions(i, 1:15) == Tmp(1, 1:15)) > 0) then
-            print *, "true"
+         if (count(Positions(i, :) == Position) == 1) then
             Position_Amount = Position_Amount + 1
-         else
-            print *, "false"
          end if
-         print *, Positions(i, 1:15) == Tmp(1, 1:15)
-    
       end do
    end function Get_amount_by_position
 end program lab_1_2
