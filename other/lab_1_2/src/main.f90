@@ -1,5 +1,3 @@
-! Copyright 2015 Fyodorov S. A.
-
 program lab_1_2
    use Environment
 

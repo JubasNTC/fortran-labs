@@ -1,5 +1,3 @@
-! Copyright 2015 Fyodorov S. A.
-  
 program lab_1_3
    use Environment
    use Group_Process
