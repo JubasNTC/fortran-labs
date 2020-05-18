@@ -66,7 +66,7 @@ contains
       else if (Current%Aver_Mark == Current%next%Aver_Mark) then
          if (Current%Surname > Current%next%Surname) then
             Swap = .true.
-         else if (Current%Surname==Current%next%Surname .and. Current%Initials>Current%next%Initials) then
+         else if (Current%Surname==Current%next%Surname) then
             Swap = .true.
          end if
       end if

@@ -5,13 +5,11 @@ module Group_IO
 
    implicit none
    integer, parameter :: SURNAME_LEN   = 15
-   integer, parameter :: INITIALS_LEN  = 5
-   integer, parameter :: MARKS_AMOUNT  = 5
+   integer, parameter :: MARKS_AMOUNT  = 4
 
    ! Структура данных для хранения данных о студенте.
    type student
       character(SURNAME_LEN, kind=CH_)    :: Surname              = ""
-      character(INITIALS_LEN, kind=CH_)   :: Initials             = ""
       character(kind=CH_)                 :: Sex                  = ""
       integer                             :: Marks(MARKS_AMOUNT)  = 0
       real(R_)                            :: Aver_Mark            = 0
@@ -38,8 +36,8 @@ contains
       character(:), allocatable  :: format
       
       allocate (Stud)
-      format = '(3(a, 1x), ' // MARKS_AMOUNT // 'i1, f5.2)'
-      read (In, format, iostat=IO) stud%Surname, stud%Initials, stud%Sex, stud%Marks, stud%Aver_Mark
+      format = '(2(a, 1x), ' // MARKS_AMOUNT // 'i1, f5.2)'
+      read (In, format, iostat=IO) stud%Surname, stud%Sex, stud%Marks, stud%Aver_Mark
       call Handle_IO_status(IO, "reading line from file")
       if (IO == 0) then
           Stud%next => Read_student(In)
@@ -68,8 +66,8 @@ contains
       integer  :: IO
       character(:), allocatable  :: format
 
-      format = '(3(a, 1x), ' // MARKS_AMOUNT // 'i1, f5.2)'
-      write (Out, format, iostat=IO) Stud%Surname, Stud%Initials, Stud%Sex, Stud%Marks, Stud%Aver_Mark
+      format = '(2(a, 1x), ' // MARKS_AMOUNT // 'i1, f5.2)'
+      write (Out, format, iostat=IO) Stud%Surname, Stud%Sex, Stud%Marks, Stud%Aver_Mark
       call Handle_IO_status(IO, "writing student")
       if (Associated(Stud%next)) &
          call Output_student(Out, Stud%next)
