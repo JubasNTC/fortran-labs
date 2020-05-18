@@ -3,6 +3,8 @@ FFLAGS=-Wall -std=f2008ts -fimplicit-none -Wno-maybe-uninitialized -static-libgf
 FOPT=-O3 -ftree-vectorize -fopt-info-vec
 
 all:
+	[ -d bin ] || mkdir bin
+	[ -d obj ] || mkdir obj
 	$(FC) $(FFLAGS) -c src/environment.f90 -J obj/ -o obj/environment.o
 	$(FC) $(FFLAGS) -c src/group_io.f90 -J obj/ -o obj/group_io.o
 	$(FC) $(FFLAGS) $(FOPT) -c src/group_process.f90 -J obj/ -o obj/group_process.o
