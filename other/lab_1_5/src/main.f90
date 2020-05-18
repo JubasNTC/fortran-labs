@@ -1,6 +1,6 @@
 ! Copyright 2015 Fyodorov S. A.
 
-program reference_lab_1_5
+program lab_1_5
    use Environment
    use Group_Process
    use Group_IO
@@ -33,4 +33,4 @@ program reference_lab_1_5
          call Output_class_list(output_file, Girls_List, "Успеваемость девушек:", "append")
    end if
 
-end program reference_lab_1_5
+end program lab_1_5

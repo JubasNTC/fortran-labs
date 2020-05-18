@@ -1,6 +1,6 @@
 ! Copyright 2015 Fyodorov S. A.
   
-program reference_lab_1_4
+program lab_1_4
    use Environment
    use Group_Process
    use Group_IO
@@ -44,4 +44,4 @@ program reference_lab_1_4
    call Output_class_list(output_file, Boys, "Успеваемость юношей:", "append")
    call Output_class_list(output_file, Girls, "Успеваемость девушек:", "append")
 
-end program reference_lab_1_4
+end program lab_1_4

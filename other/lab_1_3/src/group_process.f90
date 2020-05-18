@@ -41,7 +41,7 @@ contains
       else if (Group(j)%Aver_mark == Group(j+1)%Aver_mark) then
          if (Group(j)%Surname > Group(j+1)%Surname) then
             Swap = .true.
-         else if (Group(j)%Surname==Group(j+1)%Surname .and. Group(j)%Initials>Group(j+1)%Initials) then
+         else if (Group(j)%Surname==Group(j+1)%Surname) then
             Swap = .true.
          end if
       end if

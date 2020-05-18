@@ -1,6 +1,6 @@
 ! Copyright 2015 Fyodorov S. A.
 
-program reference_lab_1_2
+program lab_1_2
    use Environment
 
    implicit none
@@ -194,4 +194,4 @@ contains
       Aver_Marks(j) = tmpAverMark
    end subroutine Swap_from_current
 
-end program reference_lab_1_2
+end program lab_1_2
