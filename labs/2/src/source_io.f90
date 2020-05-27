@@ -1,5 +1,3 @@
-! Copyright 2015 Fyodorov S. A.
-
 module Source_IO
    use Environment
 

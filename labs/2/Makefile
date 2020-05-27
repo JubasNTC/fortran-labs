@@ -15,4 +15,4 @@ clean:
 
 run:
 	cd ./bin; ./app;
-	cat bin/source.f90.diff
+	cat bin/output.txt
