@@ -8,7 +8,7 @@ program reference_lab_2
    integer                   :: first, last, k, In
 
    type(SourceLine), pointer :: InitialCode  => Null()   ! Первоначальный текст.
-   !type(SourceLine), pointer :: ModdedCode   => Null()   ! Модифицированный текст.
+   type(SourceLine), pointer :: ModdedCode   => Null()   ! Модифицированный текст.
 
    F1 = "../data/text.txt"
    F2 = "../data/params.txt"
@@ -20,6 +20,6 @@ program reference_lab_2
       read (In, *) first, last, k
    close (In)
 
-   call Output_Source_Code(F3, InitialCode)
-
+   call Move_Strings(1, 3, 4, InitialCode, ModdedCode)
+   call Output_Source_Code(F3, ModdedCode)
 end program reference_lab_2
