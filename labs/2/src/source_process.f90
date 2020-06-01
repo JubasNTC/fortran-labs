@@ -6,11 +6,11 @@ module Source_Process
 
 contains
    subroutine Move_Strings(NB, KB, K, InitialStrings)    
-      type(SourceLine), pointer, intent(in)  :: InitialStrings
+      type(SourceLine), pointer, intent(inout)  :: InitialStrings
       integer, intent (in)                   :: NB, KB, K
 
       type(SourceLine), pointer  :: CurrentInitial, CurrentTmp
-      type(SourceLine), pointer  :: CurrentK, CurrentNB, CurrentKB
+      type(SourceLine), pointer  :: CurrentK, CurrentNB, PrevNB, CurrentKB
 
       integer                 ::  number_string = 1
 
@@ -20,11 +20,12 @@ contains
       CurrentNB => null()
       CurrentKB => null()
 
-      ! Установка указателей на номера строк.
       do while (Associated(CurrentInitial))
          if (number_string == K) then
             CurrentK => CurrentInitial
-         else if (number_string == NB-1) then
+         else if (number_string == NB - 1) then
+            PrevNB => CurrentInitial
+         else if (number_string == NB) then
             CurrentNB => CurrentInitial
          else if (number_string == KB) then
             CurrentKB => CurrentInitial
@@ -33,23 +34,14 @@ contains
          number_string = number_string + 1
       end do
 
-      CurrentInitial => InitialStrings
-      CurrentTmp     => CurrentInitial
-      number_string = 1
-      
-      move_loop: &    
-      do while (Associated(CurrentTmp))
-         CurrentInitial => CurrentInitial%Next
-         CurrentTmp     => CurrentTmp%Next 
-         number_string = number_string + 1         
-         if (number_string == K) then
-            CurrentInitial => CurrentNB%next
-         else if (number_string == NB-1) then
-            CurrentInitial => CurrentKB%next
-         else if (number_string == KB) then
-            CurrentInitial => CurrentK%next
-         end if
-      end do move_loop
+      if (NB == 1) then
+         InitialStrings => CurrentKB%next
+      else
+         PrevNB%next => CurrentKB%next
+      end if
+
+      CurrentKB%next => CurrentK%next
+      CurrentK%next => CurrentNB
 
    end subroutine Move_Strings
 end module Source_process

@@ -8,6 +8,7 @@ program reference_lab_2
    integer                   :: first, last, k, In
 
    type(SourceLine), pointer :: InitialCode  => Null()
+   !type(SourceLine), pointer :: EditCode  => Null()
 
    F1 = "../data/text.txt"
    F2 = "../data/params.txt"
