@@ -5,14 +5,14 @@ module Source_Process
    implicit none
 
 contains
-   subroutine Move_Strings(NB, KB, K, InitialStrings, ModedStrings)
-      type(SourceLine), pointer, intent(in)  :: InitialStrings, ModedStrings
-      integer, intent (in)                :: NB, KB, K
+   subroutine Move_Strings(NB, KB, K, InitialStrings)    
+      type(SourceLine), pointer, intent(in)  :: InitialStrings
+      integer, intent (in)                   :: NB, KB, K
 
       type(SourceLine), pointer  :: CurrentInitial, CurrentModded, CurrentTmp
       type(SourceLine), pointer  :: CurrentK, CurrentNB, CurrentKB
 
-      integer                    ::  number_string = 1
+      integer                 ::  number_string = 1
 
       CurrentInitial => InitialStrings
 
@@ -30,11 +30,11 @@ contains
             CurrentKB => CurrentInitial
          end if
          CurrentInitial => CurrentInitial%Next
-         number_string = number_string + 1        
+         number_string = number_string + 1
       end do
 
       CurrentInitial => InitialStrings
-      CurrentTmp     => CurrentInitial     
+      CurrentTmp     => CurrentInitial
       number_string = 1
       
       move_loop: &    
@@ -48,8 +48,8 @@ contains
             CurrentInitial => CurrentKB%next
          else if (number_string == KB) then
             CurrentInitial => CurrentK%next
-         end if                             
-      end do move_loop     
-         
+         end if
+      end do move_loop
+
    end subroutine Move_Strings
 end module Source_process
