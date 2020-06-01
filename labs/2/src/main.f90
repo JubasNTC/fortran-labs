@@ -20,5 +20,5 @@ program reference_lab_2
    close (In)
 
    call Move_Strings(1, 3, 4, InitialCode)
-   call Output_Source_Code(F3, ModdedCode)
+   call Output_Source_Code(F3, InitialCode)
 end program reference_lab_2

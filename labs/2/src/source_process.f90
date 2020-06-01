@@ -9,7 +9,7 @@ contains
       type(SourceLine), pointer, intent(in)  :: InitialStrings
       integer, intent (in)                   :: NB, KB, K
 
-      type(SourceLine), pointer  :: CurrentInitial, CurrentModded, CurrentTmp
+      type(SourceLine), pointer  :: CurrentInitial, CurrentTmp
       type(SourceLine), pointer  :: CurrentK, CurrentNB, CurrentKB
 
       integer                 ::  number_string = 1
