@@ -9,7 +9,7 @@ contains
       type(SourceLine), pointer, intent(inout)  :: InitialStrings
       integer, intent (in)                   :: NB, KB, K
 
-      type(SourceLine), pointer  :: CurrentInitial, CurrentTmp
+      type(SourceLine), pointer  :: CurrentInitial
       type(SourceLine), pointer  :: CurrentK, CurrentNB, PrevNB, CurrentKB
 
       integer                 ::  number_string = 1
@@ -33,6 +33,10 @@ contains
          CurrentInitial => CurrentInitial%Next
          number_string = number_string + 1
       end do
+
+      if (NB == KB) then
+         CurrentKB => CurrentNB
+      end if
 
       if (NB == 1) then
          InitialStrings => CurrentKB%next
