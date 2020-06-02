@@ -20,6 +20,6 @@ program reference_lab_2
       read (In, *) first, last, k
    close (In)
 
-   call Move_Strings(1, 3, 4, InitialCode)
+   call Move_Strings(first, last, k, InitialCode)
    call Output_Source_Code(F3, InitialCode)
 end program reference_lab_2

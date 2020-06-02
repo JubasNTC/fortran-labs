@@ -20,6 +20,7 @@ contains
       CurrentNB => null()
       CurrentKB => null()
 
+      ! Установка указателей на номера строк.
       do while (Associated(CurrentInitial))
          if (number_string == K) then
             CurrentK => CurrentInitial
