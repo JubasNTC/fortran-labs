@@ -2,13 +2,15 @@ module Source_IO
    use Environment
 
    implicit none
-   
+
+   ! Структура данных для хранения строки текста.
    type SourceLine
       character(:, CH_), allocatable   :: String
       type(SourceLine), pointer        :: Next  => Null()
    end type SourceLine
 
 contains
+   ! Чтение исходного текста.
    function Read_Source_Code(InputFile) result (Code)
       type(SourceLine), pointer  :: Code
       character(*), intent(in)   :: InputFile
@@ -19,6 +21,7 @@ contains
       close (In)
    end function Read_Source_Code
 
+   ! Чтение строки исходного текста.
    recursive function Read_Source_Line(in) result(Code)
       type(SourceLine), pointer  :: Code
       integer, intent(in)        :: In
@@ -26,6 +29,7 @@ contains
       character(max_len, CH_) :: string
       integer                 :: IO
 
+      ! Чтение строки во временную строку бОльшей длины.
       read (In, "(a)", iostat=IO) string
       call Handle_IO_Status(IO, "reading line from source code")
       if (IO == 0) then
@@ -36,7 +40,8 @@ contains
          Code => Null()
       end if
    end function Read_Source_Line
- 
+
+   ! Вывод исходного кода.
    subroutine Output_Source_Code(OutputFile, Code)
       character(*), intent(in)      :: OutputFile 
       type(SourceLine), intent(in)  :: Code 
@@ -47,6 +52,7 @@ contains
       close (Out)
    end subroutine Output_Source_Code
 
+   ! Вывод строки исходного текста.
    recursive subroutine Output_Source_Line(Out, Code)
       integer, intent(in)           :: Out
       type(SourceLine), intent(in)  :: Code

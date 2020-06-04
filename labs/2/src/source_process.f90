@@ -14,6 +14,7 @@ contains
 
       integer                 ::  number_string = 1
 
+      ! Иницилизация временной перемной
       CurrentInitial => InitialStrings
 
       CurrentK  => null()
@@ -35,16 +36,19 @@ contains
          number_string = number_string + 1
       end do
 
+      ! Частный случай
       if (NB == KB) then
          CurrentKB => CurrentNB
       end if
 
+      ! Частный случай
       if (NB == 1) then
          InitialStrings => CurrentKB%next
       else
          PrevNB%next => CurrentKB%next
       end if
 
+      ! Перестановка строк
       CurrentKB%next => CurrentK%next
       CurrentK%next => CurrentNB
 

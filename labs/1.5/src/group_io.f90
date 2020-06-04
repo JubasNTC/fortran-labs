@@ -5,7 +5,7 @@ module Group_IO
    integer, parameter :: SURNAME_LEN   = 15
    integer, parameter :: POSITIONS_LEN  = 15
 
-   ! Структура данных для хранения данных о студенте.
+   ! Структура данных для хранения данных о сотруднике.
    type employee
       character(SURNAME_LEN, kind=CH_)     :: Surname              = ""
       character(POSITIONS_LEN, kind=CH_)   :: Position             = ""
@@ -13,7 +13,7 @@ module Group_IO
    end type employee
 
 contains
-   ! Чтение списка класса: фамилии, инициалы, полы и оценки.
+   ! Чтение списка класса: фамилии и должности
    function Read_class_list(Input_File) result(Class_List)
       type(employee), pointer     :: Class_List
       character(*), intent(in)    :: Input_File
@@ -24,7 +24,7 @@ contains
       close (In)
    end function Read_class_list
 
-   ! Чтение следующего студента.
+   ! Чтение следующего сотрудника.
    recursive function Read_employee(In) result(Emp)
       type(employee), pointer  :: Emp
       integer, intent(in)     :: In
@@ -43,7 +43,7 @@ contains
       end if
    end function Read_employee
 
-   ! Вывод списка класса со средним баллом или без него.
+   ! Вывод списка класса
    subroutine Output_class_list(Output_File, Class_List, List_Name, Position)
       character(*), intent(in)    :: Output_File, Position, List_Name
       type(employee), intent(in)  :: Class_List
@@ -55,6 +55,7 @@ contains
       close (Out)
    end subroutine Output_class_list
 
+   ! Вывод сотрудника
    recursive subroutine Output_employee(Out, Emp)
       integer, intent(in)        :: Out
       type(employee), intent(in) :: Emp
